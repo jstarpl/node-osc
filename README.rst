@@ -1,3 +1,6 @@
+NOTE: THIS IS A SLIGTLY MODIFIED VERSION OF THE NODE-OSC MODULE. IT
+IGNORES TYPE TAGS IT DOESN'T UNDERSTAND, AND JUST CONTINUES.
+
 --------
 node-osc
 --------
@@ -19,26 +22,26 @@ Example
 Sending OSC messages:
 
 ::
-  
+
   var osc = require('node-osc');
-  
+
   var client = new osc.Client('127.0.0.1', 3333);
   client.send('/oscAddress', 200, function () {
     client.kill();
   });
-  
+
 Listening for OSC messages:
 
 ::
-  
+
   var osc = require('node-osc');
-  
+
   var oscServer = new osc.Server(3333, '0.0.0.0');
   oscServer.on("message", function (msg, rinfo) {
   	console.log("TUIO message:");
   	console.log(msg);
   });
-  
+
 Example of received TUIO (based on OSC) messages:
 
 ::
@@ -54,7 +57,7 @@ Example of received TUIO (based on OSC) messages:
       0,
       0 ],
     [ '/tuio/2Dcur', 'fseq', 2842 ] ]
-  
+
   TUIO message:
   [ [ '/tuio/2Dcur', 'alive', 3 ],
     [ '/tuio/2Dcur',
@@ -66,7 +69,7 @@ Example of received TUIO (based on OSC) messages:
       0,
       0 ],
     [ '/tuio/2Dcur', 'fseq', 2843 ] ]
-  
+
   TUIO message:
   [ [ '/tuio/2Dcur', 'alive' ],
     [ '/tuio/2Dcur', 'fseq', 2844 ] ]
